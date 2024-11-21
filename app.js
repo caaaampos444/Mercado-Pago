@@ -1,10 +1,10 @@
-const { MercadoPagoConfig, Payment } = require('mercadopago')
+const { MercadoPagoConfig, Payment, MercadoPago } = require('mercadopago')
 const client = new MercadoPagoConfig(
     { 
         accessToken: 'APP_USR-7186513777788039-091623-be1b55d679dcfeaec50e2646381835b5-473604831', 
         options: { 
             timeout: 5000, 
-            idempotencyKey: 'abc' 
+            idempotencyKey: 'abccfcccc' 
         } 
     }
 );
@@ -22,6 +22,9 @@ app.use((request,response,next) =>{
     next()
 })
 
+console.log();
+
+
 const bodyParserJSON=bodyParser.json()
 
 app.post('/criar-pix',cors(), bodyParserJSON, async function(request, response){
@@ -38,7 +41,7 @@ app.post('/criar-pix',cors(), bodyParserJSON, async function(request, response){
             }
         }
     }
-    const requestOptions = { idempotencyKey: '<SOME_UNIQUE_VALUE>' }
+    const requestOptions = { idempotencyKey: '123f33' }
 
     payment.create({ body, requestOptions })
         .then((result) => {
